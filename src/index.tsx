@@ -6,15 +6,15 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import { ConnectedRouter } from 'react-router-redux';
 import { createBrowserHistory } from 'history';
-import asyncMatchRoutes from './utils';
+// import asyncMatchRoutes from './utils';
 import './index.css';
-import Loadable from 'react-loadable';
+import { preloadReady } from 'react-loadable';
 
 (async () => {
   const history = createBrowserHistory();
   const store = StoreConfig(history);
-  const hydrate = async routeList => {
-    const {  match, params } = await asyncMatchRoutes(routeList, history.location.pathname);
+  const hydrate = async (routeList: any) => {
+    // const {  match, params } = await asyncMatchRoutes(routeList, history.location.pathname);
     ReactDOM.render(
       <Provider store={store}>
         <ConnectedRouter history={history} store={store}>
@@ -24,8 +24,7 @@ import Loadable from 'react-loadable';
       document.getElementById('root') as HTMLElement
     );
   }
-  
-  await Loadable.preloadReady();
+  await preloadReady();
   await hydrate(routes);
 })()
 

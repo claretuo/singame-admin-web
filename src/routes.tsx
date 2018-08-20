@@ -1,8 +1,9 @@
-import Hello from './containers/Hello';
 import About from './containers/About';
+import App from './containers/App';
+import Hello from './containers/Hello';
 const routes = [
   {
-    component: Hello,
+    component: App,
     routes: [
       { path: '/', exact: true, component: Hello },
       { path: '/about', component: About },

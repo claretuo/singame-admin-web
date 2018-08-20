@@ -13,6 +13,7 @@ const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const ReactLoadablePlugin = require('react-loadable/webpack').ReactLoadablePlugin;
+const tsImportPluginFactory = require('ts-import-plugin');
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
 const publicPath = '/';
@@ -245,7 +246,7 @@ module.exports = {
                 }
               }
             ],
-            exclude: ["node_modules"]
+            exclude: /node_modules/
           },
           {
             test: /\.scss$/,
